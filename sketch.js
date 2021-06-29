@@ -46,16 +46,7 @@ function preload(){
   spCoinImg = loadImage("insLevel.png")
   coinImg = loadImage("coin.png")
   lifeImg = loadImage("life.png")
-  coinSound = loadSound("coinPick.wav")
-  levelSound = loadSound("levelUp.wav")
-  bigExp = loadSound("bigExp.wav")
-  smallExp = loadSound("smallExp.wav")
-  shoot1 = loadSound("shoot1.mp3")
-  shoot2 = loadSound("shoot2.mp3")
-  lifeLose = loadSound("lifeLose.mp3")
-  lifePick = loadSound("lifePick.mp3")
-  winS = loadSound("winSound.mp3")
-  loseS = loadSound("loseSound.mp3")
+  
   S2A_B = loadImage("2ABAckground.png")
   S2B_B = loadImage("2BBAckground.png")
   S2C_B = loadImage("2CBAckground.png")
@@ -211,9 +202,9 @@ function draw(){
     if(keyWentDown("space") && bulletStock >0){
       randShoot = Math.round(random(1,2))
       if(randShoot == 1){
-        shoot1.play()
+        
       }else{
-        shoot2.play()
+        
       }
       SpBullet();
       bulletStock = bulletStock-1
@@ -240,7 +231,7 @@ function draw(){
     if(player.isTouching(lifeGroup)){
       lifeGroup.destroyEach();
       life = life+1
-      lifePick.play();
+      
     }
   
     if(player.isTouching(enemyGroup)){
@@ -248,7 +239,7 @@ function draw(){
         life = life-1
         enemyGroup.destroyEach();
         score = score-5
-        lifeLose.play()
+        
       }else{
         loseS.play()
         gameState = "fail"
@@ -261,7 +252,7 @@ function draw(){
       spcoinGroup.destroyEach();
       bulletStock = level*50
       score = score+15
-      levelSound.play()
+      
     }
 
     if(player.isTouching(coinGroup)){
@@ -272,7 +263,7 @@ function draw(){
         coinCount = 0
         bulletStock = level*50
         score = score+15
-        levelSound.play()
+        
       }else{
         score = score+5
       }
@@ -296,7 +287,7 @@ function draw(){
         life = life-2
         maxEnemyGroup.destroyEach();
         score = score-10
-        lifeLose.play()
+        
         bulletMax = 5
       }else{
         loseS.play()
@@ -309,7 +300,7 @@ function draw(){
       enemyGroup.destroyEach()
       score = score+5
       bulletGroup.destroyEach();
-      smallExp.play()
+      
     }
 
     if(bulletGroup.isTouching(maxEnemyGroup)){
@@ -318,7 +309,7 @@ function draw(){
         score = score+20
         bulletGroup.destroyEach()
         bulletMax = 5
-        bigExp.play()
+        
         if(gameState == "finalStage"){
           if(kills<5){
             kills = kills+1
@@ -408,7 +399,7 @@ function draw(){
 
   
   if(level >7){
-    winS.play()
+     
   }
 
   if(gameState == "win"){
